@@ -77,7 +77,7 @@ export const projects: Project[] = [
     decisions: ['The published project stack is Streamlit with MongoDB and Python data and charting libraries.', 'The public README lists default credentials. They are deliberately not reproduced here; treat any public deployment as unsafe until credentials and access controls are reviewed.'],
     learnings: 'The repository documents intended functionality, but there is no public demo or test evidence available in this review. This case study avoids exposing patient data or login details.',
     github: 'https://github.com/AB-Amine/gestion_rendez_vous', featured: true, visual: 'clinic',
-    image: { src: '/projects/medigest-preview.png', alt: 'MediGest administration page preview with audit log entries hidden', caption: 'Audit log entries hidden for privacy' },
+    image: { src: '/projects/medigest-concept.jpg', alt: 'Illustrated MediGest clinic management concept with an example calendar interface', caption: 'AI-generated concept illustration · interface is illustrative' },
   },
   {
     slug: 'zakat-tracker', title: 'Zakat Tracker', category: 'Collaborative · Mobile fintech',
