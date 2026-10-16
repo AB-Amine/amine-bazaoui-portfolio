@@ -10,7 +10,7 @@ The site uses only details supported by the supplied CV, public GitHub repositor
 - **Algorithmic Trading System:** currently not featured. Provide a repository or demo, model evaluation protocol, data source details, and Amine's contribution if it should replace one of the selected projects.
 - **OCP Group internship (Aug 2026):** confirm title and duties, since only the internship department and dates appear in the CV.
 - **CV download:** provide a public-approved, privacy-reviewed PDF if a resume download should appear. The supplied CV remains a private source and is excluded from public assets.
-- **Contact details:** confirm that the CV email and LinkedIn profile are intended for public professional contact.
+- **Contact details:** the public email and LinkedIn URL were provided directly by Amine.
 - **Launch domain and screenshots:** provide the final domain for canonical metadata and a sitemap, plus approved project screenshots where available. The analytics image is a diagram; the Khadija and MediGest images are labeled concept artwork. None is presented as a verified product screenshot.
 
 No address, phone number, or other private CV details are published. No live demo buttons appear for URLs that could not be verified.

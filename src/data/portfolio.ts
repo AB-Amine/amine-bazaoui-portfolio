@@ -29,9 +29,9 @@ export const identity = {
     ],
     note: 'Current interests: NLP, generative AI, and applied AI for health education.',
   },
-  email: 'bazaouiamine85@gmail.com',
+  email: 'aminebazaoui2000@gmail.com',
   github: 'https://github.com/AB-Amine',
-  linkedin: 'https://linkedin.com/in/amine-bazaoui',
+  linkedin: 'https://www.linkedin.com/in/aminebazaoui/',
   resume: null as string | null,
 }
 
