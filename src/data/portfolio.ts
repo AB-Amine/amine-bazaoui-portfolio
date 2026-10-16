@@ -14,6 +14,7 @@ export type Project = {
   github?: string
   featured: boolean
   visual: 'care' | 'stream' | 'clinic' | 'market' | 'lift'
+  image?: { src: string; alt: string; caption?: string; fit?: 'cover' | 'contain' }
 }
 
 export const identity = {
@@ -48,6 +49,7 @@ export const projects: Project[] = [
     learnings: 'The repository URL has been supplied, but GitHub could not be fetched during this review. Project functionality and Amine’s individual contribution therefore remain based on the CV and need confirmation against the source.',
     github: 'https://github.com/AB-Amine/khadija-ai',
     featured: true, visual: 'care',
+    image: { src: '/projects/khadija-ai-concept.jpg', alt: 'Illustrated Khadija AI mobile health education concept with phone mockups', caption: 'AI-generated concept illustration · not a product screenshot' },
   },
   {
     slug: 'quantum-analytics', title: 'Real-Time Analytics Platform', category: 'Data engineering · Streaming',
@@ -61,6 +63,7 @@ export const projects: Project[] = [
     decisions: ['The pipeline separates event ingestion from processing and dashboard reads.', 'The repository includes integration-oriented test files, but this portfolio has not independently executed the full Docker stack.'],
     learnings: 'The repository and CV support the component-level architecture. The CV mentions sub-500 ms latency, but no benchmark evidence was found, so no performance claim is published here.',
     github: 'https://github.com/AB-Amine/dashbord_simple', featured: true, visual: 'stream',
+    image: { src: '/projects/real-time-analytics-diagram.png', alt: 'Diagram showing real-time analytics connecting applications and analytics', caption: 'Project diagram · not a product screenshot' },
   },
   {
     slug: 'medigest', title: 'MediGest', category: 'Software engineering · Clinic management',
@@ -74,6 +77,7 @@ export const projects: Project[] = [
     decisions: ['The published project stack is Streamlit with MongoDB and Python data and charting libraries.', 'The public README lists default credentials. They are deliberately not reproduced here; treat any public deployment as unsafe until credentials and access controls are reviewed.'],
     learnings: 'The repository documents intended functionality, but there is no public demo or test evidence available in this review. This case study avoids exposing patient data or login details.',
     github: 'https://github.com/AB-Amine/gestion_rendez_vous', featured: true, visual: 'clinic',
+    image: { src: '/projects/medigest-preview.png', alt: 'MediGest administration page preview with audit log entries hidden', caption: 'Audit log entries hidden for privacy' },
   },
   {
     slug: 'zakat-tracker', title: 'Zakat Tracker', category: 'Collaborative · Mobile fintech',
@@ -88,6 +92,7 @@ export const projects: Project[] = [
     learnings: 'The README credits the team and documents the stack and features. Amine’s specific contribution and the current live-demo status still need confirmation.',
     github: 'https://github.com/Adilchagri/zakat-app',
     featured: true, visual: 'market',
+    image: { src: '/projects/zakat-app-icon.jpg', alt: 'Zakat Calculator mobile app icon', fit: 'contain' },
   },
   {
     slug: 'atlas-ascenseurs', title: 'Atlas Ascenseurs', category: 'Software engineering · Corporate website',
@@ -101,6 +106,7 @@ export const projects: Project[] = [
     decisions: ['Configurator options are filtered by elevator profile so choices reflect each selected model.', 'The configurator can generate a PDF summary; optional lead export depends on an environment-configured Google Sheets endpoint.'],
     learnings: 'The public repository and commit history support Amine’s frontend contributions. No independently verified usage metrics or customer outcomes are available, so none are claimed.',
     github: 'https://github.com/Adilchagri/atlas-ascenseur', featured: true, visual: 'lift',
+    image: { src: '/projects/atlas-ascenseurs-home.png', alt: 'Atlas Ascenseurs corporate website homepage showing its elevator products' },
   },
 ]
 

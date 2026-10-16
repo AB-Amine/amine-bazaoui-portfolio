@@ -18,6 +18,14 @@ function ProjectVisual({ kind }: { kind: Project['visual'] }) {
   return <div className={`project-visual visual-${kind}`} aria-hidden="true"><span className="visual-index">0{projects.findIndex(p => p.visual === kind) + 1}</span><svg viewBox="0 0 210 160" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">{variants[kind]}</svg><span className="visual-caption">{kind === 'care' ? 'CARE · EDUCATION' : kind === 'stream' ? 'INGEST → PROCESS → SERVE' : kind === 'clinic' ? 'SCHEDULE · RECORD · REVIEW' : kind === 'lift' ? 'PRODUCTS · CONFIGURE · CONTACT' : 'SIGNAL · MODEL · TEST'}</span><span className="visual-note">Illustrative visual · no product screenshot supplied</span></div>
 }
 
+function ProjectArtwork({ project }: { project: Project }) {
+  if (!project.image) return <ProjectVisual kind={project.visual} />
+  return <div className="project-visual project-image-frame">
+    <img className={`project-image${project.image.fit === 'contain' ? ' project-image-contain' : ''}`} src={project.image.src} alt={project.image.alt} loading="lazy" />
+    {project.image.caption && <span className="project-image-caption">{project.image.caption}</span>}
+  </div>
+}
+
 function Header({ detail = false }: { detail?: boolean }) {
   const links = [['Projects', 'projects'], ['Experience', 'experience'], ['Skills', 'skills'], ['Education', 'education'], ['About', 'about'], ['Contact', 'contact']]
   const target = (id: string) => detail ? `/#${id}` : `#${id}`
@@ -26,7 +34,7 @@ function Header({ detail = false }: { detail?: boolean }) {
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   return <article className={`project-card ${index === 0 ? 'project-featured' : ''}`}>
-    <a href={`/projects/${project.slug}`} className="project-art" aria-label={`Read the ${project.title} case study`}><ProjectVisual kind={project.visual} /><span className="art-link">Read case study <Arrow diagonal /></span></a>
+    <a href={`/projects/${project.slug}`} className="project-art" aria-label={`Read the ${project.title} case study`}><ProjectArtwork project={project} /><span className="art-link">Read case study <Arrow diagonal /></span></a>
     <div className="project-copy"><p className="eyebrow">{project.category}</p><h3><a href={`/projects/${project.slug}`}>{project.title}</a></h3><p className="project-summary">{project.summary}</p><p className="project-context">{project.cardNote}</p><div className="tag-list">{project.stack.map(tag => <span key={tag}>{tag}</span>)}</div><div className="project-links"><a href={`/projects/${project.slug}`}>Case study <Arrow /></a>{project.github && <a href={project.github} target="_blank" rel="noreferrer">GitHub <Arrow diagonal /></a>}</div></div>
   </article>
 }
@@ -50,7 +58,7 @@ function Home() {
 }
 
 function CaseStudy({ project }: { project: Project }) {
-  return <><Header detail /><main id="main-content" className="case-main wrap" tabIndex={-1}><a className="back-link" href="/#projects">← All projects</a><div className="case-hero"><p className="eyebrow">{project.category}</p><h1>{project.title}</h1><p className="case-summary">{project.summary}</p><ProjectVisual kind={project.visual} /></div><div className="case-layout"><aside className="case-meta"><div><span>Context</span><p>{project.context}</p></div><div><span>My role</span><p>{project.role}</p></div><div><span>Technology</span><ul>{project.stack.map(s => <li key={s}>{s}</li>)}</ul></div>{project.github && <a className="case-github" href={project.github} target="_blank" rel="noreferrer">View repository <Arrow diagonal /></a>}</aside><article className="case-body"><section><p className="eyebrow">OVERVIEW</p><p>{project.overview}</p></section><section><p className="eyebrow">WHAT IT INCLUDES</p><ul>{project.built.map(item => <li key={item}>{item}</li>)}</ul></section><section><p className="eyebrow">ENGINEERING NOTES</p><ul>{project.decisions.map(item => <li key={item}>{item}</li>)}</ul></section><section><p className="eyebrow">EVIDENCE & NEXT STEPS</p><p>{project.learnings}</p></section></article></div><nav className="case-next" aria-label="More projects"><span>Continue exploring</span><a href="/#projects">All selected work <Arrow /></a></nav></main><Footer /></>
+  return <><Header detail /><main id="main-content" className="case-main wrap" tabIndex={-1}><a className="back-link" href="/#projects">← All projects</a><div className="case-hero"><p className="eyebrow">{project.category}</p><h1>{project.title}</h1><p className="case-summary">{project.summary}</p><ProjectArtwork project={project} /></div><div className="case-layout"><aside className="case-meta"><div><span>Context</span><p>{project.context}</p></div><div><span>My role</span><p>{project.role}</p></div><div><span>Technology</span><ul>{project.stack.map(s => <li key={s}>{s}</li>)}</ul></div>{project.github && <a className="case-github" href={project.github} target="_blank" rel="noreferrer">View repository <Arrow diagonal /></a>}</aside><article className="case-body"><section><p className="eyebrow">OVERVIEW</p><p>{project.overview}</p></section><section><p className="eyebrow">WHAT IT INCLUDES</p><ul>{project.built.map(item => <li key={item}>{item}</li>)}</ul></section><section><p className="eyebrow">ENGINEERING NOTES</p><ul>{project.decisions.map(item => <li key={item}>{item}</li>)}</ul></section><section><p className="eyebrow">EVIDENCE & NEXT STEPS</p><p>{project.learnings}</p></section></article></div><nav className="case-next" aria-label="More projects"><span>Continue exploring</span><a href="/#projects">All selected work <Arrow /></a></nav></main><Footer /></>
 }
 
 function Footer() { return <footer className="site-footer"><div className="wrap footer-inner"><a href="/#top" className="wordmark">amine<span>.</span></a><span>© {new Date().getFullYear()} Amine Bazaoui</span><span>Made with care in Morocco.</span></div></footer> }
